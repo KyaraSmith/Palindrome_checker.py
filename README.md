@@ -1,7 +1,13 @@
 def is_palindrome(word):
-    word = word.lower()  # convert the word to lowercase
-    reversed_word = word[::-1]  # reverse the word
-    if word == reversed_word:  # check if the original and reversed words are the same
-        return True
-    else:
-        return False
+    # Convert the word to lowercase and remove any non-alphanumeric characters
+    word = ''.join(c for c in word.lower() if c.isalnum())
+    # Get the length of the word
+    n = len(word)
+    # Iterate over the first half of the word
+    for i in range(n//2):
+        # Compare the i-th character with the (n-i-1)-th character
+        if word[i] != word[n-i-1]:
+            # If they are not the same, return False
+            return False
+    # If all pairs of characters match, return True
+    return True
